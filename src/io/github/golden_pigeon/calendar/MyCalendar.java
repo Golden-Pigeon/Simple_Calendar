@@ -1,8 +1,8 @@
 package io.github.golden_pigeon.calendar;
 /**
- * Ô­´´ÈÕÀúÀà
- * ÓÃÓÚÖ´ĞĞ¸÷ÖÖÈÕÀú²Ù×÷
- * ÒÀÀµÓÚDateÀà
+ * åŸåˆ›æ—¥å†ç±»
+ * ç”¨äºæ‰§è¡Œå„ç§æ—¥å†æ“ä½œ
+ * ä¾èµ–äºDateç±»
  * @author Golden_Pigeon
  *
  */
@@ -12,17 +12,17 @@ public class MyCalendar {
 		this.date = new Date();
 	}
 	/**
-	 * ´òÓ¡Ö¸¶¨Äê·İµÄÈÕÀú
-	 * @param year Ö¸¶¨µÄÄê·İ
+	 * æ‰“å°æŒ‡å®šå¹´ä»½çš„æ—¥å†
+	 * @param year æŒ‡å®šçš„å¹´ä»½
 	 */
 	public void printCalendarByYear(int year) throws IllegalDateException{
 		for(int month = 1; month <= 12; month++)
 			printCalendarByMonth(year, month);
 	}
 	/**
-	 * ´òÓ¡Ö¸¶¨µÄÄê·İ¼°ÔÂ·İµÄÈÕÀú
-	 * @param year Ö¸¶¨µÄÄê·İ
-	 * @param month Ö¸¶¨µÄÔÂ·İ
+	 * æ‰“å°æŒ‡å®šçš„å¹´ä»½åŠæœˆä»½çš„æ—¥å†
+	 * @param year æŒ‡å®šçš„å¹´ä»½
+	 * @param month æŒ‡å®šçš„æœˆä»½
 	 */
 	public void printCalendarByMonth(int year, int month) throws IllegalDateException{
 		date.setTotal(year, month, 1);
@@ -34,9 +34,9 @@ public class MyCalendar {
 		for(int i = 0; i < maxDays; i++) {
 			calendar[pos + i] = i + 1;
 		}
-		System.out.println(month + "ÔÂ");
+		System.out.println(month + "æœˆ");
 		System.out.println("-------------------------------");
-		System.out.println("ÖÜÈÕ\tÖÜÒ»\tÖÜ¶ş\tÖÜÈı\tÖÜËÄ\tÖÜÎå\tÖÜÁù");
+		System.out.println("å‘¨æ—¥\tå‘¨ä¸€\tå‘¨äºŒ\tå‘¨ä¸‰\tå‘¨å››\tå‘¨äº”\tå‘¨å…­");
 		for(int i = 0; i < 6; i++) {
 			for(int j = 0; j < 7; j++) {
 				if(calendar[i * 7 + j] != 0)
@@ -52,28 +52,28 @@ public class MyCalendar {
 	public String getDayInWeek(int year, int month, int day) throws IllegalDateException{
 		date.setTotal(year, month, day);
 		int dayInWeek = date.getCurrentDayInWeek();
-		String weekDay = "ÖÜ";
+		String weekDay = "å‘¨";
 		switch(dayInWeek) {
 		case 1:
-			weekDay += "Ò»";
+			weekDay += "ä¸€";
 			break;
 		case 2:
-			weekDay += "¶ş";
+			weekDay += "äºŒ";
 			break;
 		case 3:
-			weekDay += "Èı";
+			weekDay += "ä¸‰";
 			break;
 		case 4:
-			weekDay += "ËÄ";
+			weekDay += "å››";
 			break;
 		case 5:
-			weekDay += "Îå";
+			weekDay += "äº”";
 			break;
 		case 6:
-			weekDay += "Áù";
+			weekDay += "å…­";
 			break;
 		default:
-			weekDay += "ÈÕ";
+			weekDay += "æ—¥";
 		}
 		return weekDay;
 	}

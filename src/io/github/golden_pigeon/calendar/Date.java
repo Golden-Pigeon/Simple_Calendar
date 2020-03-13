@@ -1,17 +1,17 @@
 package io.github.golden_pigeon.calendar;
 /**
- * Õâ¸öÀàÓÃÓÚ±íÊ¾ÈÕÆÚÒÔ¼°´¦ÀíÒ»Ğ©ÓĞ¹ØÈÕÆÚµÄ»ù±¾²Ù×÷
+ * è¿™ä¸ªç±»ç”¨äºè¡¨ç¤ºæ—¥æœŸä»¥åŠå¤„ç†ä¸€äº›æœ‰å…³æ—¥æœŸçš„åŸºæœ¬æ“ä½œ
  * @author Golden_Pigeon
  *
  */
 public class Date {
 	/**
-	 * currentXXX±íÊ¾µ±Ç°µÄÈÕÆÚ£¬³õÊ¼»¯Îª2000Äê1ÔÂ1ÈÕĞÇÆÚÁù
-	 * tempXXXÓÃÓÚ´¢´æÓÃ»§Éè¶¨µÄÈÕÆÚ
-	 * Ã¿µ±ÓÃ»§Éè¶¨ÈÕÆÚºó£¬Ö´ĞĞdayInWeekStandardize()º¯Êı£¬ÊÇ¡°µ±Ç°ÈÕÆÚ¡±Ç°½ø/ºóÍËµ½Éè¶¨ÈÕÆÚ£¬
-	 * ²¢Óë´ËÍ¬Ê±¼ÆËã³öÓÃ»§Éè¶¨ÈÕÆÚµÄĞÇÆÚ¡£
-	 * <ÀàµÄ×÷Õß>ÔÚplus/minusDayµÈ·½·¨ÍâĞŞ¸ÄÒÔÏÂ×Ö¶ÎºóÒª×¢ÒâÔÚ·½·¨½áÊøÇ°È·±£¶ÔÓ¦×Ö¶ÎÏàµÈ
-	 * ±äÁ¿ÉèÖÃ³ÉprivateÒÔ±ÜÃâÓÃ»§Ë½×ÔĞŞ¸ÄÓĞ¹Ø±äÁ¿¶øÃ»ÓĞ½øĞĞĞÇÆÚµÄ±ê×¼»¯Ôì³É´íÎó¡£
+	 * currentXXXè¡¨ç¤ºå½“å‰çš„æ—¥æœŸï¼Œåˆå§‹åŒ–ä¸º2000å¹´1æœˆ1æ—¥æ˜ŸæœŸå…­
+	 * tempXXXç”¨äºå‚¨å­˜ç”¨æˆ·è®¾å®šçš„æ—¥æœŸ
+	 * æ¯å½“ç”¨æˆ·è®¾å®šæ—¥æœŸåï¼Œæ‰§è¡ŒdayInWeekStandardize()å‡½æ•°ï¼Œæ˜¯â€œå½“å‰æ—¥æœŸâ€å‰è¿›/åé€€åˆ°è®¾å®šæ—¥æœŸï¼Œ
+	 * å¹¶ä¸æ­¤åŒæ—¶è®¡ç®—å‡ºç”¨æˆ·è®¾å®šæ—¥æœŸçš„æ˜ŸæœŸã€‚
+	 * <ç±»çš„ä½œè€…>åœ¨plus/minusDayç­‰æ–¹æ³•å¤–ä¿®æ”¹ä»¥ä¸‹å­—æ®µåè¦æ³¨æ„åœ¨æ–¹æ³•ç»“æŸå‰ç¡®ä¿å¯¹åº”å­—æ®µç›¸ç­‰
+	 * å˜é‡è®¾ç½®æˆprivateä»¥é¿å…ç”¨æˆ·ç§è‡ªä¿®æ”¹æœ‰å…³å˜é‡è€Œæ²¡æœ‰è¿›è¡Œæ˜ŸæœŸçš„æ ‡å‡†åŒ–é€ æˆé”™è¯¯ã€‚
 	 * 
 	 */
 	private int currentYear = 2000;
@@ -23,21 +23,21 @@ public class Date {
 	private int currentDayInWeek = 6;
 	private final int[] daysPerMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; 
 	/**
-	 * ¹¹Ôì·½·¨
-	 * @param year Éè¶¨Äê·İ
-	 * @param month Éè¶¨ÔÂ·İ
-	 * @param day Éè¶¨ÈÕ
+	 * æ„é€ æ–¹æ³•
+	 * @param year è®¾å®šå¹´ä»½
+	 * @param month è®¾å®šæœˆä»½
+	 * @param day è®¾å®šæ—¥
 	 */
 	public Date(int year, int month, int day) throws IllegalDateException{
 		this.tempYear = year;
 		this.tempMonth = month;
 		this.tempDay = day;
-		dayInWeekStandardize(); //Ê¹µ±Ç°ÈÕÆÚÇ°½ø/ºóÍË£¬²¢¼ÆËãĞÇÆÚ
+		dayInWeekStandardize(); //ä½¿å½“å‰æ—¥æœŸå‰è¿›/åé€€ï¼Œå¹¶è®¡ç®—æ˜ŸæœŸ
 		
 	}
 	/**
-	 * Ä¬ÈÏ¹¹Ôì·½·¨
-	 * ³õÊ¼»¯Îª2000Äê1ÔÂ1ÈÕ
+	 * é»˜è®¤æ„é€ æ–¹æ³•
+	 * åˆå§‹åŒ–ä¸º2000å¹´1æœˆ1æ—¥
 	 */
 	public Date() {
 		this.tempYear = 2000;
@@ -45,8 +45,8 @@ public class Date {
 		this.tempDay = 1;
 	}
 	/**
-	 * ÅĞ¶Ïµ±Ç°Äê·İÊÇ·ñÎªÈòÄê
-	 * @return ÊÇÈòÄêÔò·µ»Øtrue,·ñÔò·µ»Øfalse.
+	 * åˆ¤æ–­å½“å‰å¹´ä»½æ˜¯å¦ä¸ºé—°å¹´
+	 * @return æ˜¯é—°å¹´åˆ™è¿”å›true,å¦åˆ™è¿”å›false.
 	 */
 	public boolean isLeap() {
 		if((currentYear % 4 == 0)&&((currentYear % 100 != 0)||(currentYear % 400 == 0)))
@@ -55,37 +55,37 @@ public class Date {
 			return false;
 	}
 	/**
-	 * ÅĞ¶Ïµ±Ç°ÔÂ·İÊÇ·ñÎªÈòÔÂ
-	 * @return ÊÇÈòÔÂÔò·µ»Øtrue,·ñÔò·µ»Øfalse.
+	 * åˆ¤æ–­å½“å‰æœˆä»½æ˜¯å¦ä¸ºé—°æœˆ
+	 * @return æ˜¯é—°æœˆåˆ™è¿”å›true,å¦åˆ™è¿”å›false.
 	 */
 	public boolean isLeapMonth() {
-		if(isLeap()&&currentMonth == 2) // Ö»ÓĞÈòÄêµÄ¶şÔÂ²Å¿ÉÄÜÊÇÈòÔÂ
+		if(isLeap()&&currentMonth == 2) // åªæœ‰é—°å¹´çš„äºŒæœˆæ‰å¯èƒ½æ˜¯é—°æœˆ
 			return true;
 		else
 			return false;
 	}
 	/**
-	 * ¼ÆËãµ±Ç°ÔÂ·İ×ÜÌìÊı
-	 * @return µ±Ç°ÔÂ·İ×ÜÌìÊı
+	 * è®¡ç®—å½“å‰æœˆä»½æ€»å¤©æ•°
+	 * @return å½“å‰æœˆä»½æ€»å¤©æ•°
 	 */
 	public int maxDaysInCurrentMonth() {
-		return daysPerMonth[currentMonth - 1] + (isLeapMonth() ? 1 : 0); //Èç¹ûÊÇÈòÔÂÔò¼ÓÒ»Ìì
+		return daysPerMonth[currentMonth - 1] + (isLeapMonth() ? 1 : 0); //å¦‚æœæ˜¯é—°æœˆåˆ™åŠ ä¸€å¤©
 	}
 
 	/**
-	 * Ìá¹©¸øÓÃ»§µÄÈÕÆÚÇ°½ø·½·¨
-	 * @param days Ç°½øµÄÌìÊı
+	 * æä¾›ç»™ç”¨æˆ·çš„æ—¥æœŸå‰è¿›æ–¹æ³•
+	 * @param days å‰è¿›çš„å¤©æ•°
 	 */
 	public void plusDays(int days) {
 		for(int i = 0; i < days; i++)
 			plusDay();
-		//È·±£Ã¿´Î²Ù×÷ºótempXXXÓëcurrentXXXÊÇÒ»ÖÂµÄ
+		//ç¡®ä¿æ¯æ¬¡æ“ä½œåtempXXXä¸currentXXXæ˜¯ä¸€è‡´çš„
 		tempDay = currentDay;
 		tempMonth = currentMonth;
 		tempYear = currentYear;
 	}
 	/**
-	 * µ×²ã·½·¨£¬ÈÕÆÚÇ°½øÒ»Ìì£¬²¢°´ÕÕ¹æÔò½øÎ»£¬Í¬Ê±¸üĞÂĞÇÆÚ¡£
+	 * åº•å±‚æ–¹æ³•ï¼Œæ—¥æœŸå‰è¿›ä¸€å¤©ï¼Œå¹¶æŒ‰ç…§è§„åˆ™è¿›ä½ï¼ŒåŒæ—¶æ›´æ–°æ˜ŸæœŸã€‚
 	 */
 	private void plusDay() {
 		if(currentDay < maxDaysInCurrentMonth())
@@ -100,19 +100,19 @@ public class Date {
 			currentDayInWeek = 1;
 	}
 	/**
-	 * plusDayµÄ¸¨Öú·½·¨£¬Ôö¼ÓÔÂ·İ£¬²¢°´¹æÔò½øÎ»
+	 * plusDayçš„è¾…åŠ©æ–¹æ³•ï¼Œå¢åŠ æœˆä»½ï¼Œå¹¶æŒ‰è§„åˆ™è¿›ä½
 	 */
 	private void plusMonth() {
 		if(currentMonth < 12)
 			currentMonth++;
 		else {
-			//½øÎ»
+			//è¿›ä½
 			currentMonth = 1;
 			plusYear();
 		}
 	}
 	/**
-	 * plusMonth¸¨Öú·½·¨£¬Ôö¼ÓÔÂ·İ
+	 * plusMonthè¾…åŠ©æ–¹æ³•ï¼Œå¢åŠ æœˆä»½
 	 */
 	private void plusYear() {
 		currentYear++;
@@ -121,19 +121,19 @@ public class Date {
 	}
 	
 	/**
-	 * Ìá¹©¸øÓÃ»§µÄÈÕÆÚºóÍË·½·¨
-	 * @param days ºóÍËµÄÌìÊı
+	 * æä¾›ç»™ç”¨æˆ·çš„æ—¥æœŸåé€€æ–¹æ³•
+	 * @param days åé€€çš„å¤©æ•°
 	 */
 	public void minusDays(int days) {
 		for(int i = 0; i < days; i++)
 			minusDay();
-		//È·±£Ã¿´Î²Ù×÷ºótempXXXÓëcurrentXXXÊÇÒ»ÖÂµÄ
+		//ç¡®ä¿æ¯æ¬¡æ“ä½œåtempXXXä¸currentXXXæ˜¯ä¸€è‡´çš„
 		tempDay = currentDay;
 		tempMonth = currentMonth;
 		tempYear = currentYear;
 	}
 	/**
-	 * ÈÕÆÚºóÍËÒ»Ìì£¬ÆäËûÓëplusDayÀàËÆ£¬²»ÔÙ×¸Êö¡£
+	 * æ—¥æœŸåé€€ä¸€å¤©ï¼Œå…¶ä»–ä¸plusDayç±»ä¼¼ï¼Œä¸å†èµ˜è¿°ã€‚
 	 */
 	private void minusDay() {
 		if(currentDay > 1)
@@ -163,15 +163,15 @@ public class Date {
 			currentYear--;
 	}
 	/**
-	 * Ê¹µ±Ç°ÈÕÆÚÇ°½ø/ºóÍË£¬Ö±ÖÁÓÃ»§Éè¶¨ÈÕÆÚ£¬²¢¼ÆËãĞÇÆÚ¡£
+	 * ä½¿å½“å‰æ—¥æœŸå‰è¿›/åé€€ï¼Œç›´è‡³ç”¨æˆ·è®¾å®šæ—¥æœŸï¼Œå¹¶è®¡ç®—æ˜ŸæœŸã€‚
 	 */
 	private void dayInWeekStandardize() throws IllegalDateException {
 		if(!isDateLegal())
 			throw new IllegalDateException();
-		int cmp = tempCmpCurrent(); //ÓÃÓÚcmpÅĞ¶ÏÉè¶¨µÄÈÕÆÚÔÚµ±Ç°ÈÕÆÚÖ®Ç°»¹ÊÇÖ®ºóÒÔ¾ö¶¨Ç°½ø/ºóÍË
-		if(cmp == 0) // Èôµ±Ç°ÈÕÆÚÓëÉè¶¨ÈÕÆÚÏàÍ¬£¬Ôò²»Ö´ĞĞÈÎºÎ²Ù×÷
+		int cmp = tempCmpCurrent(); //ç”¨äºcmpåˆ¤æ–­è®¾å®šçš„æ—¥æœŸåœ¨å½“å‰æ—¥æœŸä¹‹å‰è¿˜æ˜¯ä¹‹åä»¥å†³å®šå‰è¿›/åé€€
+		if(cmp == 0) // è‹¥å½“å‰æ—¥æœŸä¸è®¾å®šæ—¥æœŸç›¸åŒï¼Œåˆ™ä¸æ‰§è¡Œä»»ä½•æ“ä½œ
 			return;
-		else if(cmp > 0) // ÈÕÆÚÇ°½ø£¬Ö±µ½Éè¶¨ÈÕÆÚ£¬ÏÂÍ¬
+		else if(cmp > 0) // æ—¥æœŸå‰è¿›ï¼Œç›´åˆ°è®¾å®šæ—¥æœŸï¼Œä¸‹åŒ
 			while(tempCmpCurrent() > 0)
 				plusDay();
 		else
@@ -179,8 +179,8 @@ public class Date {
 				minusDay();
 	}
 	/**
-	 * ±È½ÏÉè¶¨µÄÈÕÆÚÔÚµ±Ç°ÈÕÆÚÖ®Ç°»¹ÊÇÖ®ºó
-	 * @return ÔÚÖ®Ç°·µ»Ø¸ºÖµ£¬ÔÚÖ®ºó·µ»ØÕıÖµ£¬·ñÔò·µ»Ø0.
+	 * æ¯”è¾ƒè®¾å®šçš„æ—¥æœŸåœ¨å½“å‰æ—¥æœŸä¹‹å‰è¿˜æ˜¯ä¹‹å
+	 * @return åœ¨ä¹‹å‰è¿”å›è´Ÿå€¼ï¼Œåœ¨ä¹‹åè¿”å›æ­£å€¼ï¼Œå¦åˆ™è¿”å›0.
 	 */
 	private int tempCmpCurrent() {
 		if(tempYear > currentYear)
@@ -214,7 +214,7 @@ public class Date {
 	}
 	
 	/**
-	 * ÓÃÓÚÖ±½ÓÊä³öÈÕÆÚ
+	 * ç”¨äºç›´æ¥è¾“å‡ºæ—¥æœŸ
 	 */
 	@Override
 	public String toString() {
@@ -222,7 +222,7 @@ public class Date {
 	}
 	
 	/**
-	 * ÒÔÏÂÎªsetterºÍgetter.
+	 * ä»¥ä¸‹ä¸ºsetterå’Œgetter.
 	 */
 	
 	public void setDay(int day) throws IllegalDateException{
@@ -264,8 +264,8 @@ public class Date {
 	}
 	/**
 	 * 
-	 * @param date ÁíÒ»¸ö¡°ÈÕÆÚ¡±(Date)
-	 * @return ¶şÕßÊÇ·ñÏàµÈ
+	 * @param date å¦ä¸€ä¸ªâ€œæ—¥æœŸâ€(Date)
+	 * @return äºŒè€…æ˜¯å¦ç›¸ç­‰
 	 */
 	public boolean equals(Date date) {
 		if((this.currentDay==date.currentDay)&&
